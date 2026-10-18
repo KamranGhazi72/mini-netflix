@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  # ------------------------------------------------------
+  # 1. PostgreSQL (Relational Database - OLTP / ACID)
+  # ------------------------------------------------------
+  postgres:
+    image: postgres:15-alpine
+    container_name: netflix-postgres
+    restart: always
+    environment:
+      POSTGRES_DB: netflix_db
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  # ------------------------------------------------------
+  # 2. MongoDB (Document Database - NoSQL / Flexible Schema)
+  # ------------------------------------------------------
+  mongodb:
+    image: mongo:6.0
+    container_name: netflix-mongo
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  # ------------------------------------------------------
+  # 3. Redis (Key-Value Database - In-Memory / Cache)
+  # ------------------------------------------------------
+  redis:
+    image: redis:7-alpine
+    container_name: netflix-redis
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+volumes:
+  postgres_data:
+  mongo_data:
+  redis_data:

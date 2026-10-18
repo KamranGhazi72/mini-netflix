@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: netflix
+
+  # ------------------------------------------------------
+  # 1. PostgreSQL Settings (SQL / Relational)
+  # ------------------------------------------------------
+  datasource:
+    url: jdbc:postgresql://localhost:5432/netflix_db
+    username: admin
+    password: password
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  # ------------------------------------------------------
+  # 2. MongoDB Settings (Document Store)
+  # ------------------------------------------------------
+  mongodb:
+      host: localhost
+      port: 27017
+      database: netflix_docs
+    
+
+    # ------------------------------------------------------
+    # 3. Redis Settings (Key-Value / Cache)
+    # ------------------------------------------------------
+  data:  
+    redis:
+      host: localhost
+      port: 6379

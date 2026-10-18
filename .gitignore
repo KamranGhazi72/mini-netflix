@@ -1,0 +1,13 @@
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Build & Dependencies (بعداً تکمیل‌تر می‌شود)
+backend/target/
+frontend/node_modules/
+frontend/.next/
